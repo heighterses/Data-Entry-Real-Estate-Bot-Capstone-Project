@@ -20,10 +20,18 @@ class Bot:
         self.soup = BeautifulSoup(self.web_data_text_format, "html.parser")
 
     def scrap_property_prices(self):
-        price = self.soup.findAll("span", class_="f343d9ce")
+        price = self.soup.findAll("span", "f343d9ce")
         for prices in price:
-            print(prices.text)
+            price_list.append(prices.text)
+
+    def scrap_property_links(self):
+        link = self.soup.findAll("a")
+        for links in link:
+            print(links.text)
 
 
 d = Bot()
 d.scrap_property_prices()
+d.scrap_property_links()
+
+print(price_list)
